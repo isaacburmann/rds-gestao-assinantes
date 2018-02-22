@@ -13,8 +13,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "^1.7.1",
-    "@angular/compiler-cli": "^5.2.6",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -47,6 +45,8 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "@angular/language-service": "^5.2.0",
-    "typescript": "~2.5.3"
+    "typescript": "~2.5.3",
+    "@angular/cli": "^1.7.1",
+    "@angular/compiler-cli": "^5.2.6"
   }
 }
