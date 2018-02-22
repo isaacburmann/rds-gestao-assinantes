@@ -9,8 +9,13 @@ After you have installed Node, please run this command as a root user to install
 
 If you don't have git installed on your computer, just follow the instructions from this link: https://git-scm.com/downloads
 
-Now you can clone this directory in your computer using the command: git clone https://github.com/isaacburmann/rds-gestao-assinantes.git
+Now you can clone this repository in your computer using the command: git clone https://github.com/isaacburmann/rds-gestao-assinantes.git
 
-Access the directory: cd rds-gestao-assinantes/
+# Access the project directory
+run the command: cd rds-gestao-assinantes/
 
-Run the command: ng serve
+# Install the project dependencies
+run the command: npm install
+
+# Run the project in the local server
+run the command: ng serve
