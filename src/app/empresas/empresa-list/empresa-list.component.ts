@@ -5,7 +5,8 @@ import {EmpresaService} from "../empresa.service";
 @Component({
   selector: 'app-empresa-list',
   templateUrl: './empresa-list.component.html',
-  styleUrls: ['./empresa-list.component.css']
+  styleUrls: ['./empresa-list.component.css'],
+    providers: [EmpresaService]
 })
 export class EmpresaListComponent implements OnInit {
 

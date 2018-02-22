@@ -583,7 +583,8 @@ var EmpresaListComponent = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'app-empresa-list',
             template: __webpack_require__("./src/app/empresas/empresa-list/empresa-list.component.html"),
-            styles: [__webpack_require__("./src/app/empresas/empresa-list/empresa-list.component.css")]
+            styles: [__webpack_require__("./src/app/empresas/empresa-list/empresa-list.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1__empresa_service__["a" /* EmpresaService */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__empresa_service__["a" /* EmpresaService */]])
     ], EmpresaListComponent);
