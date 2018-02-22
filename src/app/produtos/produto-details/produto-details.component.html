@@ -1,0 +1,25 @@
+<div *ngIf="produto" class="row">
+  <div class="col-md-12">
+    <h2 *ngIf="produto._id">Contact Details</h2>
+    <h2 *ngIf="!produto._id">New Contact</h2>
+  </div>
+</div>
+<div *ngIf="produto" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="produto-nome">Nome</label>
+      <input class="form-control" id="produto-nome" name="produto-nome" [(ngModel)]="produto.nome" placeholder="Nome do produto"/>
+    </div>
+    <div class="form-group">
+      <label for="produto-valor-brl">Valor (BRL)</label>
+      <input class="form-control" id="produto-valor-brl" name="produto-valor-brl" [(ngModel)]="produto.valor" placeholder="Valor do produto em BRL"/>
+      <label for="produto-valor-usd">Valor (USD)</label>
+      <input class="form-control" id="produto-valor-usd" name="produto-valor-usd" [(ngModel)]="produto.valor" placeholder="Valor do produto em USD"/>
+      <label for="produto-valor-eur">Valor (EUR)</label>
+      <input class="form-control" id="produto-valor-eur" name="produto-valor-eur" [(ngModel)]="produto.valor" placeholder="Valor do produto em EUR"/>
+    </div>
+    <button class="btn btn-primary" *ngIf="!produto._id" (click)="createProduto(produto)">Create</button>
+    <button class="btn btn-info" *ngIf="produto._id" (click)="updateProduto(produto)">Update</button>
+    <button class="btn btn-danger" *ngIf="produto._id" (click)="deleteProduto(produto._id)">Delete</button>
+  </form>
+</div>

@@ -7,13 +7,21 @@ import { ContactDetailsComponent } from './contacts/contact-details/contact-deta
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
+import { EmpresaDetailsComponent } from './empresas/empresa-details/empresa-details.component';
+import { EmpresaListComponent } from './empresas/empresa-list/empresa-list.component';
+import { ProdutoListComponent } from './produtos/produto-list/produto-list.component';
+import { ProdutoDetailsComponent } from './produtos/produto-details/produto-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactDetailsComponent,
-    ContactListComponent
+    ContactListComponent,
+    EmpresaDetailsComponent,
+    EmpresaListComponent,
+    ProdutoListComponent,
+    ProdutoDetailsComponent
   ],
   imports: [
       BrowserModule,

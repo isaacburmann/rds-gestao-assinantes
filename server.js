@@ -4,6 +4,8 @@ var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
 var CONTACTS_COLLECTION = "contacts";
+var EMPRESAS_COLLECTION = "empresas";
+var PRODUTOS_COLLECTION = "produtos";
 
 var app = express();
 app.use(bodyParser.json());
@@ -33,13 +35,13 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
     });
 });
 
-// CONTACTS API ROUTES BELOW
-
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
     console.log("ERROR: " + reason);
     res.status(code || 500).json({"error": message});
 }
+
+// CONTACTS API ROUTES BELOW
 
 /*  "/api/contacts"
  *    GET: finds all contacts
@@ -106,6 +108,153 @@ app.delete("/api/contacts/:id", function(req, res) {
     db.collection(CONTACTS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
         if (err) {
             handleError(res, err.message, "Failed to delete contact");
+        } else {
+            res.status(200).json(req.params.id);
+        }
+    });
+});
+
+// EMPRESAS API ROUTES BELOW
+
+/*  "/api/empresas"
+ *    GET: finds all empresas
+ *    POST: creates a new empresa
+ */
+
+app.get("/api/empresas", function(req, res) {
+    db.collection(EMPRESAS_COLLECTION).find({}).toArray(function(err, docs) {
+        if (err) {
+            handleError(res, err.message, "Failed to get empresas.");
+        } else {
+            res.status(200).json(docs);
+        }
+    });
+});
+
+app.post("/api/empresas", function(req, res) {
+    var newEmpresa = req.body;
+
+    if (!req.body.name) {
+        handleError(res, "Invalid user input", "Must provide a name.", 400);
+    }
+
+    db.collection(EMPRESAS_COLLECTION).insertOne(newEmpresa, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to create new empresa.");
+        } else {
+            res.status(201).json(doc.ops[0]);
+        }
+    });
+});
+
+/*  "/api/empresas/:id"
+ *    GET: find empresa by id
+ *    PUT: update empresa by id
+ *    DELETE: deletes empresa by id
+ */
+
+app.get("/api/empresas/:id", function(req, res) {
+    db.collection(EMPRESAS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to get empresa");
+        } else {
+            res.status(200).json(doc);
+        }
+    });
+});
+
+app.put("/api/empresas/:id", function(req, res) {
+    var updateDoc = req.body;
+    delete updateDoc._id;
+
+    db.collection(EMPRESAS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to update empresa");
+        } else {
+            updateDoc._id = req.params.id;
+            res.status(200).json(updateDoc);
+        }
+    });
+});
+
+app.delete("/api/empresas/:id", function(req, res) {
+    db.collection(EMPRESAS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+        if (err) {
+            handleError(res, err.message, "Failed to delete empresa");
+        } else {
+            res.status(200).json(req.params.id);
+        }
+    });
+});
+
+
+// PRODUTOS API ROUTES BELOW
+
+/*  "/api/produtos"
+ *    GET: finds all produtos
+ *    POST: creates a new produto
+ */
+
+app.get("/api/produtos", function(req, res) {
+    db.collection(PRODUTOS_COLLECTION).find({}).toArray(function(err, docs) {
+        if (err) {
+            handleError(res, err.message, "Failed to get produtos.");
+        } else {
+            res.status(200).json(docs);
+        }
+    });
+});
+
+app.post("/api/produtos", function(req, res) {
+    var newEmpresa = req.body;
+
+    if (!req.body.name) {
+        handleError(res, "Invalid user input", "Must provide a name.", 400);
+    }
+
+    db.collection(PRODUTOS_COLLECTION).insertOne(newEmpresa, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to create new produto.");
+        } else {
+            res.status(201).json(doc.ops[0]);
+        }
+    });
+});
+
+/*  "/api/produtos/:id"
+ *    GET: find produto by id
+ *    PUT: update produto by id
+ *    DELETE: deletes produto by id
+ */
+
+app.get("/api/produtos/:id", function(req, res) {
+    db.collection(PRODUTOS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to get produto");
+        } else {
+            res.status(200).json(doc);
+        }
+    });
+});
+
+app.put("/api/produtos/:id", function(req, res) {
+    var updateDoc = req.body;
+    delete updateDoc._id;
+
+    db.collection(PRODUTOS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to update produto");
+        } else {
+            updateDoc._id = req.params.id;
+            res.status(200).json(updateDoc);
+        }
+    });
+});
+
+app.delete("/api/produtos/:id", function(req, res) {
+    db.collection(PRODUTOS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+        if (err) {
+            handleError(res, err.message, "Failed to delete produto");
         } else {
             res.status(200).json(req.params.id);
         }
