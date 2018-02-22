@@ -19,3 +19,20 @@ run the command: npm install
 
 # Run the project in the local server
 run the command: ng serve
+
+# RESTful API
+
+The endpoints we’ll need are:
+
+/api/empresas
+
+Method	Description
+GET	    Find all contacts
+POST	Create a new contact
+
+/api/empresas/:id
+
+Method	Description
+GET	    Find a single contact by ID
+PUT	    Update entire contact document
+DELETE	Delete a contact by ID
