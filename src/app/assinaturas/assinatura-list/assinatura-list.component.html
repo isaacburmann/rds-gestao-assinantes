@@ -1,3 +1,31 @@
-<p>
-  assinatura-list works!
-</p>
+<div class="row">
+    <div class="col-md-6">
+
+        <button class="btn btn-primary" (click)="createNewAssinatura()">Nova Assinatura</button>
+
+        <h2 style="margin-top: 20px">Assinaturas</h2>
+
+        <div class="list-group">
+            <h5>Clique na assinatura que deseja editar ou deletar</h5>
+            <a href="#" type="button" class="list-group-item list-group-item-action"
+               *ngFor="let assinatura of assinaturas"
+               (click)="selectAssinatura(assinatura)"
+               [class.active]="assinatura === selectedAssinatura">
+                Data: {{assinatura.data}}
+                <p>Produto: {{assinatura.produto.nome}}</p>
+                <p>Empresa responsável: {{assinatura.empresa_gerencia.nome}} Empresa que paga: {{assinatura.empresa_paga.nome}}</p>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <app-assinatura-details
+                [assinatura]="selectedAssinatura"
+                [produtos]="produtos"
+                [empresas]="empresas"
+                [data]="data"
+                [createHandler]="addAssinatura"
+                [updateHandler]="updateAssinatura"
+                [deleteHandler]="deleteAssinatura">
+        </app-assinatura-details>
+    </div>
+</div>

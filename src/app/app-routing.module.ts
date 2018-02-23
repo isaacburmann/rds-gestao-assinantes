@@ -6,7 +6,7 @@ import {ProdutoListComponent} from "./produtos/produto-list/produto-list.compone
 import {AssinaturaListComponent} from "./assinaturas/assinatura-list/assinatura-list.component";
 
 const appRoutes: Routes = [
-    {path: 'home', component: HomeComponent},
+    {path: '', component: HomeComponent},
     {path: 'empresas', component: EmpresaListComponent},
     {path: 'produtos', component: ProdutoListComponent},
     {path: 'assinaturas', component: AssinaturaListComponent},

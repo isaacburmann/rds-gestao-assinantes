@@ -41,7 +41,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
-    { path: 'home', component: __WEBPACK_IMPORTED_MODULE_2__home_home_component__["a" /* HomeComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_2__home_home_component__["a" /* HomeComponent */] },
     { path: 'empresas', component: __WEBPACK_IMPORTED_MODULE_3__empresas_empresa_list_empresa_list_component__["a" /* EmpresaListComponent */] },
     { path: 'produtos', component: __WEBPACK_IMPORTED_MODULE_4__produtos_produto_list_produto_list_component__["a" /* ProdutoListComponent */] },
     { path: 'assinaturas', component: __WEBPACK_IMPORTED_MODULE_5__assinaturas_assinatura_list_assinatura_list_component__["a" /* AssinaturaListComponent */] },
@@ -76,7 +76,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav style=\"background-color: #415b9b!important\" class=\"navbar navbar-light\">\n    <form class=\"form-inline\">\n        <a class=\"navbar-brand\" routerLink=\"/home\">\n            <img src=\"../assets/rd_station_logo.png\" width=\"120\" class=\"d-inline-block align-top\" alt=\"\">\n            <!--<span style=\"color: #FFFFFF\"> - Gestão de Assinantes e Pagadores</span>-->\n        </a>\n        <button routerLinkActive=\"active\" routerLink=\"/home\" style=\"margin-right: 10px; min-width: 120px\" class=\"btn btn-outline-light\" type=\"button\">Home</button>\n        <button routerLinkActive=\"active\" routerLink=\"/empresas\" style=\"margin-right: 10px; min-width: 120px\" class=\"btn btn-outline-light\" type=\"button\">Empresas</button>\n        <button routerLinkActive=\"active\" routerLink=\"/produtos\" style=\"margin-right: 10px; min-width: 120px\" class=\"btn btn-outline-light\" type=\"button\">Produtos</button>\n        <button routerLinkActive=\"active\" routerLink=\"/assinaturas\" style=\"margin-right: 10px; min-width: 120px\" class=\"btn btn-outline-light\" type=\"button\">Assinaturas</button>\n    </form>\n</nav>\n\n<div class=\"container\">\n    <br><br>\n    <router-outlet></router-outlet>\n</div>"
+module.exports = "<nav style=\"background-color: #415b9b!important\" class=\"navbar navbar-light\">\n    <form class=\"form-inline\">\n        <a class=\"navbar-brand\" routerLink=\"/\">\n            <img src=\"../assets/rd_station_logo.png\" width=\"120\" class=\"d-inline-block align-top\" alt=\"\">\n            <!--<span style=\"color: #FFFFFF\"> - Gestão de Assinantes e Pagadores</span>-->\n        </a>\n        <button routerLinkActive=\"active\" routerLink=\"/\" style=\"margin-right: 10px; min-width: 120px\" class=\"btn btn-outline-light\" type=\"button\" [routerLinkActiveOptions]=\"{exact:true}\">Home</button>\n        <button routerLinkActive=\"active\" routerLink=\"/empresas\" style=\"margin-right: 10px; min-width: 120px\" class=\"btn btn-outline-light\" type=\"button\">Empresas</button>\n        <button routerLinkActive=\"active\" routerLink=\"/produtos\" style=\"margin-right: 10px; min-width: 120px\" class=\"btn btn-outline-light\" type=\"button\">Produtos</button>\n        <button routerLinkActive=\"active\" routerLink=\"/assinaturas\" style=\"margin-right: 10px; min-width: 120px\" class=\"btn btn-outline-light\" type=\"button\">Assinaturas</button>\n    </form>\n</nav>\n\n<div class=\"container\">\n    <br><br>\n    <router-outlet></router-outlet>\n</div>"
 
 /***/ }),
 
@@ -190,7 +190,7 @@ module.exports = ""
 /***/ "./src/app/assinaturas/assinatura-details/assinatura-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  assinatura-details works!\n</p>\n"
+module.exports = "<div *ngIf=\"assinatura\" class=\"row\">\n    <div class=\"col-md-12\">\n        <h2 *ngIf=\"assinatura._id\">Detalhes da Assinatura</h2>\n        <h2 *ngIf=\"!assinatura._id\">Nova Assinatura</h2>\n    </div>\n</div>\n<div *ngIf=\"assinatura\" class=\"row\">\n    <form class=\"col-md-12\">\n        <div class=\"form-group\">\n            <label for=\"assinatura-data\">Data</label>\n            <input disabled class=\"form-control\" id=\"assinatura-data\" name=\"assinatura-data\" [value]=\"data\"/>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"assinatura-produto\">Produto</label>\n            <select class=\"custom-select\" id=\"assinatura-produto\" name=\"assinatura-produto\" [(ngModel)]=\"assinatura.produto\">\n                <option *ngFor=\"let produto of produtos\" value=\"produto\">{{produto.nome}}</option>\n            </select>\n        </div>\n        <div *ngIf=\"assinatura.produto != null\" class=\"form-group\">\n            <label for=\"assinatura-moeda\">Moeda: Valor</label>\n            <select class=\"custom-select\" id=\"assinatura-moeda\" name=\"assinatura-moeda\" [(ngModel)]=\"assinatura.moeda\" (change)=\"setAssinaturaValor()\">\n                <option value=\"brl\"> BRL: {{assinatura?.produto?.valor?.brl}}</option>\n                <option value=\"usd\"> USD: {{assinatura?.produto?.valor?.usd}}</option>\n                <option value=\"eur\"> EUR: {{assinatura?.produto?.valor?.eur}}</option>\n            </select>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"assinatura-empresa-gerencia\">Empresa responsável</label>\n            <select class=\"custom-select\" id=\"assinatura-empresa-gerencia\" name=\"assinatura-empresa-gerencia\" [(ngModel)]=\"assinatura.empresa_gerencia\">\n                <option *ngFor=\"let empresa of empresas\" value=\"empresa\">CNPJ: {{empresa.cnpj}} Nome: {{empresa.nome}}</option>\n            </select>\n        </div>\n        <div class=\"form-group\">\n            <label for=\"assinatura-empresa-paga\">Empresa que paga</label>\n            <select class=\"custom-select\" id=\"assinatura-empresa-paga\" name=\"assinatura-empresa-paga\" [(ngModel)]=\"assinatura.empresa_paga\">\n                <option *ngFor=\"let empresa of empresas\" value=\"empresa\">CNPJ: {{empresa.cnpj}} Nome: {{empresa.nome}}</option>\n            </select>\n        </div>\n\n        <button class=\"btn btn-success\" *ngIf=\"!assinatura._id\" (click)=\"createAssinatura(assinatura)\">Salvar</button>\n        <button class=\"btn btn-warning\" *ngIf=\"assinatura._id\" (click)=\"updateAssinatura(assinatura)\">Editar</button>\n        <button class=\"btn btn-danger\" *ngIf=\"assinatura._id\" (click)=\"deleteAssinatura(assinatura._id)\">Deletar</button>\n    </form>\n</div>"
 
 /***/ }),
 
@@ -200,6 +200,8 @@ module.exports = "<p>\n  assinatura-details works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AssinaturaDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assinatura__ = __webpack_require__("./src/app/assinaturas/assinatura.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__assinatura_service__ = __webpack_require__("./src/app/assinaturas/assinatura.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -210,18 +212,83 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var AssinaturaDetailsComponent = /** @class */ (function () {
-    function AssinaturaDetailsComponent() {
+    function AssinaturaDetailsComponent(assinaturaService) {
+        this.assinaturaService = assinaturaService;
     }
-    AssinaturaDetailsComponent.prototype.ngOnInit = function () {
+    AssinaturaDetailsComponent.prototype.createAssinatura = function (assinatura) {
+        var _this = this;
+        this.assinaturaService.createAssinatura(assinatura).then(function (newAssinatura) {
+            _this.createHandler(newAssinatura);
+        });
     };
+    AssinaturaDetailsComponent.prototype.updateAssinatura = function (assinatura) {
+        var _this = this;
+        this.assinaturaService.updateAssinatura(assinatura).then(function (updatedAssinatura) {
+            _this.updateHandler(updatedAssinatura);
+        });
+    };
+    AssinaturaDetailsComponent.prototype.deleteAssinatura = function (assinaturaId) {
+        var _this = this;
+        this.assinaturaService.deleteAssinatura(assinaturaId).then(function (deletedAssinaturaId) {
+            _this.deleteHandler(deletedAssinaturaId);
+        });
+    };
+    AssinaturaDetailsComponent.prototype.setAssinaturaValor = function () {
+        if (this.assinatura.produto != null && this.assinatura.produto.valor != null) {
+            switch (this.assinatura.moeda) {
+                case 'brl': {
+                    this.assinatura.valor = this.assinatura.produto.valor.brl;
+                    break;
+                }
+                case 'usd': {
+                    this.assinatura.valor = this.assinatura.produto.valor.usd;
+                    break;
+                }
+                case 'eur': {
+                    this.assinatura.valor = this.assinatura.produto.valor.eur;
+                    break;
+                }
+            }
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__assinatura__["a" /* Assinatura */])
+    ], AssinaturaDetailsComponent.prototype, "assinatura", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Array)
+    ], AssinaturaDetailsComponent.prototype, "empresas", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Array)
+    ], AssinaturaDetailsComponent.prototype, "produtos", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", String)
+    ], AssinaturaDetailsComponent.prototype, "data", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Function)
+    ], AssinaturaDetailsComponent.prototype, "createHandler", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Function)
+    ], AssinaturaDetailsComponent.prototype, "updateHandler", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Function)
+    ], AssinaturaDetailsComponent.prototype, "deleteHandler", void 0);
     AssinaturaDetailsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-assinatura-details',
             template: __webpack_require__("./src/app/assinaturas/assinatura-details/assinatura-details.component.html"),
-            styles: [__webpack_require__("./src/app/assinaturas/assinatura-details/assinatura-details.component.css")]
+            styles: [__webpack_require__("./src/app/assinaturas/assinatura-details/assinatura-details.component.css")],
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__assinatura_service__["a" /* AssinaturaService */]])
     ], AssinaturaDetailsComponent);
     return AssinaturaDetailsComponent;
 }());
@@ -240,7 +307,7 @@ module.exports = ""
 /***/ "./src/app/assinaturas/assinatura-list/assinatura-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  assinatura-list works!\n</p>\n"
+module.exports = "<div class=\"row\">\n    <div class=\"col-md-6\">\n\n        <button class=\"btn btn-primary\" (click)=\"createNewAssinatura()\">Nova Assinatura</button>\n\n        <h2 style=\"margin-top: 20px\">Assinaturas</h2>\n\n        <div class=\"list-group\">\n            <h5>Clique na assinatura que deseja editar ou deletar</h5>\n            <a href=\"#\" type=\"button\" class=\"list-group-item list-group-item-action\"\n               *ngFor=\"let assinatura of assinaturas\"\n               (click)=\"selectAssinatura(assinatura)\"\n               [class.active]=\"assinatura === selectedAssinatura\">\n                Data: {{assinatura.data}}\n                <p>Produto: {{assinatura.produto.nome}}</p>\n                <p>Empresa responsável: {{assinatura.empresa_gerencia.nome}} Empresa que paga: {{assinatura.empresa_paga.nome}}</p>\n            </a>\n        </div>\n    </div>\n    <div class=\"col-md-6 col-md-offset-2\">\n        <app-assinatura-details\n                [assinatura]=\"selectedAssinatura\"\n                [produtos]=\"produtos\"\n                [empresas]=\"empresas\"\n                [data]=\"data\"\n                [createHandler]=\"addAssinatura\"\n                [updateHandler]=\"updateAssinatura\"\n                [deleteHandler]=\"deleteAssinatura\">\n        </app-assinatura-details>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -250,6 +317,9 @@ module.exports = "<p>\n  assinatura-list works!\n</p>\n"
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AssinaturaListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assinatura_service__ = __webpack_require__("./src/app/assinaturas/assinatura.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__produtos_produto_service__ = __webpack_require__("./src/app/produtos/produto.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__empresas_empresa_service__ = __webpack_require__("./src/app/empresas/empresa.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -260,20 +330,196 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
 var AssinaturaListComponent = /** @class */ (function () {
-    function AssinaturaListComponent() {
+    function AssinaturaListComponent(assinaturaService, empresaService, produtoService) {
+        var _this = this;
+        this.assinaturaService = assinaturaService;
+        this.empresaService = empresaService;
+        this.produtoService = produtoService;
+        this.getIndexOfAssinatura = function (assinaturaId) {
+            return _this.assinaturas.findIndex(function (assinatura) {
+                return assinatura._id === assinaturaId;
+            });
+        };
+        this.deleteAssinatura = function (assinaturaId) {
+            var idx = _this.getIndexOfAssinatura(assinaturaId);
+            if (idx !== -1) {
+                _this.assinaturas.splice(idx, 1);
+                _this.selectAssinatura(null);
+            }
+            return _this.assinaturas;
+        };
+        this.addAssinatura = function (assinatura) {
+            _this.assinaturas.push(assinatura);
+            _this.selectAssinatura(assinatura);
+            return _this.assinaturas;
+        };
+        this.updateAssinatura = function (assinatura) {
+            var idx = _this.getIndexOfAssinatura(assinatura._id);
+            if (idx !== -1) {
+                _this.assinaturas[idx] = assinatura;
+                _this.selectAssinatura(assinatura);
+            }
+            return _this.assinaturas;
+        };
     }
     AssinaturaListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data = new Date().toLocaleDateString('pt-BR');
+        console.log('data');
+        console.log(this.data);
+        this.assinaturaService.getAssinaturas()
+            .then(function (assinaturas) {
+            _this.assinaturas = assinaturas.map(function (assinatura) {
+                return assinatura;
+            });
+        });
+        this.empresaService
+            .getEmpresas()
+            .then(function (empresas) {
+            _this.empresas = empresas.map(function (empresa) {
+                return empresa;
+            });
+        });
+        this.produtoService
+            .getProdutos()
+            .then(function (produtos) {
+            _this.produtos = produtos.map(function (produto) {
+                return produto;
+            });
+        });
+    };
+    AssinaturaListComponent.prototype.selectAssinatura = function (assinatura) {
+        this.selectedAssinatura = assinatura;
+    };
+    AssinaturaListComponent.prototype.createNewAssinatura = function () {
+        var assinatura = {
+            moeda: '',
+            valor: '',
+            data: '',
+            produto: {
+                _id: '',
+                nome: '',
+                valor: {
+                    brl: '',
+                    usd: '',
+                    eur: '',
+                }
+            },
+            empresa_gerencia: {
+                _id: '',
+                nome: '',
+                cnpj: '',
+            },
+            empresa_paga: {
+                _id: '',
+                nome: '',
+                cnpj: '',
+            },
+        };
+        // By default, a newly-created assinatura will have the selected state.
+        this.selectAssinatura(assinatura);
     };
     AssinaturaListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-assinatura-list',
             template: __webpack_require__("./src/app/assinaturas/assinatura-list/assinatura-list.component.html"),
-            styles: [__webpack_require__("./src/app/assinaturas/assinatura-list/assinatura-list.component.css")]
+            styles: [__webpack_require__("./src/app/assinaturas/assinatura-list/assinatura-list.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1__assinatura_service__["a" /* AssinaturaService */], __WEBPACK_IMPORTED_MODULE_3__empresas_empresa_service__["a" /* EmpresaService */], __WEBPACK_IMPORTED_MODULE_2__produtos_produto_service__["a" /* ProdutoService */]]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__assinatura_service__["a" /* AssinaturaService */], __WEBPACK_IMPORTED_MODULE_3__empresas_empresa_service__["a" /* EmpresaService */], __WEBPACK_IMPORTED_MODULE_2__produtos_produto_service__["a" /* ProdutoService */]])
     ], AssinaturaListComponent);
     return AssinaturaListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/assinaturas/assinatura.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AssinaturaService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/toPromise.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AssinaturaService = /** @class */ (function () {
+    function AssinaturaService(http) {
+        this.http = http;
+        this.assinaturasUrl = '/api/assinaturas';
+    }
+    // get("/api/assinaturas")
+    AssinaturaService.prototype.getAssinaturas = function () {
+        return this.http.get(this.assinaturasUrl)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    // post("/api/assinaturas")
+    AssinaturaService.prototype.createAssinatura = function (newAssinatura) {
+        return this.http.post(this.assinaturasUrl, newAssinatura)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    // get("/api/assinaturas/:id") endpoint not used by Angular app
+    // delete("/api/assinaturas/:id")
+    AssinaturaService.prototype.deleteAssinatura = function (delAssinaturaId) {
+        return this.http.delete(this.assinaturasUrl + '/' + delAssinaturaId)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    // put("/api/assinaturas/:id")
+    AssinaturaService.prototype.updateAssinatura = function (putAssinatura) {
+        var putUrl = this.assinaturasUrl + '/' + putAssinatura._id;
+        return this.http.put(putUrl, putAssinatura)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    AssinaturaService.prototype.handleError = function (error) {
+        var errMsg = (error.message) ? error.message :
+            error.status ? error.status + " - " + error.statusText : 'Server error';
+        console.error(errMsg); // log to console instead
+    };
+    AssinaturaService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+    ], AssinaturaService);
+    return AssinaturaService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/assinaturas/assinatura.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Assinatura; });
+var Assinatura = /** @class */ (function () {
+    function Assinatura() {
+    }
+    return Assinatura;
 }());
 
 
@@ -563,7 +809,7 @@ module.exports = ""
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  home works!\n</p>\n"
+module.exports = "<h2><strong>Gestão de assinantes e pagadores</strong></h2>\n<h5>Seja bem vindo ao sistema de gestão de assinantes e pagadores da RD Station.</h5>\n"
 
 /***/ }),
 
