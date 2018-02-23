@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Empresa } from './empresa';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import {SERVER_URL} from "../../environments/environment";
 
 @Injectable()
 export class EmpresaService {
-    private empresasUrl = '/api/empresas';
+    private empresasUrl = SERVER_URL + '/api/empresas';
 
     constructor (private http: Http) {}
 

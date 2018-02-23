@@ -27,10 +27,7 @@ export class AssinaturaDetailsComponent {
     @Input()
     deleteHandler: Function;
 
-    constructor (private assinaturaService: AssinaturaService) {
-        console.log('assinatura')
-        console.log(this.assinatura)
-    }
+    constructor (private assinaturaService: AssinaturaService) {}
 
     createAssinatura(assinatura: Assinatura) {
         this.assinaturaService.createAssinatura(assinatura).then((newAssinatura: Assinatura) => {
@@ -50,7 +47,8 @@ export class AssinaturaDetailsComponent {
         });
     }
 
-    setAssinaturaValor() {
+    setAssinaturaValorData(value) {
+        this.assinatura.data = this.data;
         if(this.assinatura.produto != null && this.assinatura.produto.valor != null) {
 
             switch (this.assinatura.moeda) {

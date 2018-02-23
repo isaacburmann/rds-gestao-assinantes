@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Assinatura} from "./assinatura";
+import {SERVER_URL} from "../../environments/environment";
 
 @Injectable()
 export class AssinaturaService {
-    private assinaturasUrl = '/api/assinaturas';
+    private assinaturasUrl = SERVER_URL +  '/api/assinaturas';
 
     constructor (private http: Http) {}
 

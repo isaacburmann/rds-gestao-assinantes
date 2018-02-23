@@ -1,4 +1,5 @@
 var express = require("express");
+var cors = require('cors');
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
@@ -8,6 +9,7 @@ var PRODUTOS_COLLECTION = "produtos";
 var ASSINATURAS_COLLECTION = "assinaturas";
 
 var app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 // Create link to Angular build directory
@@ -17,8 +19,14 @@ app.use(express.static(distDir));
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
+//For running locally only
+//var MONGO_URI = "mongodb://heroku_j0k144n5:ge6buss098frbfnnv4ulbcesjk@ds243798.mlab.com:43798/heroku_j0k144n5"
+
+//For running on Heroku
+var MONGO_URI = process.env.MONGODB_URI
+
 // Connect to the database before starting the application server.
-mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+mongodb.MongoClient.connect(MONGO_URI, function (err, database) {
     if (err) {
         console.log(err);
         process.exit(1);
