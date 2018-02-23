@@ -2,6 +2,8 @@
 
 Um projeto web de gestão de assinaturas para o desafio da RDS
 
+# To run locally
+
 To run this project locally you will need Node.js and Angular CLI installed
 
 To install Node, please follow the instructions from this link: https://nodejs.org/en/download/
