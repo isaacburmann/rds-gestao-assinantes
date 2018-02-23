@@ -7,7 +7,7 @@
 
         <div class="list-group">
             <h5>Clique na empresa que deseja editar ou deletar</h5>
-            <a href="#" type="button" class="list-group-item list-group-item-action"
+            <a type="button" class="list-group-item list-group-item-action"
                     *ngFor="let empresa of empresas"
                     (click)="selectEmpresa(empresa)"
                     [class.active]="empresa === selectedEmpresa">

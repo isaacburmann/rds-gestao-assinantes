@@ -7,7 +7,7 @@
 
         <div class="list-group">
             <h5>Clique na assinatura que deseja editar ou deletar</h5>
-            <a href="#" type="button" class="list-group-item list-group-item-action"
+            <a type="button" class="list-group-item list-group-item-action"
                *ngFor="let assinatura of assinaturas"
                (click)="selectAssinatura(assinatura)"
                [class.active]="assinatura === selectedAssinatura">
