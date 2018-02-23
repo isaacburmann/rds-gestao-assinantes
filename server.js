@@ -134,7 +134,7 @@ app.get("/api/empresas", function(req, res) {
 app.post("/api/empresas", function(req, res) {
     var newEmpresa = req.body;
 
-    if (!req.body.name) {
+    if (!req.body.nome) {
         handleError(res, "Invalid user input", "Must provide a name.", 400);
     }
 
@@ -206,13 +206,13 @@ app.get("/api/produtos", function(req, res) {
 });
 
 app.post("/api/produtos", function(req, res) {
-    var newEmpresa = req.body;
+    var newProduto = req.body;
 
-    if (!req.body.name) {
+    if (!req.body.nome) {
         handleError(res, "Invalid user input", "Must provide a name.", 400);
     }
 
-    db.collection(PRODUTOS_COLLECTION).insertOne(newEmpresa, function(err, doc) {
+    db.collection(PRODUTOS_COLLECTION).insertOne(newProduto, function(err, doc) {
         if (err) {
             handleError(res, err.message, "Failed to create new produto.");
         } else {
