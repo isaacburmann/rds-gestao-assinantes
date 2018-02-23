@@ -27,7 +27,10 @@ export class AssinaturaDetailsComponent {
     @Input()
     deleteHandler: Function;
 
-    constructor (private assinaturaService: AssinaturaService) {}
+    constructor (private assinaturaService: AssinaturaService) {
+        console.log('assinatura')
+        console.log(this.assinatura)
+    }
 
     createAssinatura(assinatura: Assinatura) {
         this.assinaturaService.createAssinatura(assinatura).then((newAssinatura: Assinatura) => {

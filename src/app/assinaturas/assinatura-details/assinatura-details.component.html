@@ -16,7 +16,7 @@
                 <option *ngFor="let produto of produtos" value="produto">{{produto.nome}}</option>
             </select>
         </div>
-        <div *ngIf="assinatura.produto != null && assinatura.produto.nome != null" class="form-group">
+        <div *ngIf="assinatura.produto != null && assinatura.produto.nome != ''" class="form-group">
             <label for="assinatura-moeda">Moeda: Valor</label>
             <select class="custom-select" id="assinatura-moeda" name="assinatura-moeda" [(ngModel)]="assinatura.moeda" (change)="setAssinaturaValor()">
                 <option value="brl"> BRL: {{assinatura.produto.nome}}</option>
