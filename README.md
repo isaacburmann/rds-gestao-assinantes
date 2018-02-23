@@ -1,4 +1,5 @@
 # rds-gestao-assinantes
+
 Um projeto web de gestão de assinaturas para o desafio da RDS
 
 To run this project locally you will need Node.js and Angular CLI installed

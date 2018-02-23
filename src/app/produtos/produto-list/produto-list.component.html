@@ -7,12 +7,12 @@
 
         <div class="list-group">
             <h5>Clique no produto que deseja editar ou deletar</h5>
-            <button type="button" class="list-group-item"
+            <a href="#" type="button" class="list-group-item list-group-item-action"
                     *ngFor="let produto of produtos"
                     (click)="selectProduto(produto)"
                     [class.active]="produto === selectedProduto">
                 Nome: {{produto.nome}}
-            </button>
+            </a>
         </div>
     </div>
     <div class="col-md-6 col-md-offset-2">
