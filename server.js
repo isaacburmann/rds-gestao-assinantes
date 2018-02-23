@@ -9,7 +9,6 @@ var PRODUTOS_COLLECTION = "produtos";
 var ASSINATURAS_COLLECTION = "assinaturas";
 
 var app = express();
-app.use(cors());
 app.use(bodyParser.json());
 
 // Create link to Angular build directory
@@ -21,6 +20,7 @@ var db;
 
 //For running locally only
 //var MONGO_URI = "mongodb://heroku_j0k144n5:ge6buss098frbfnnv4ulbcesjk@ds243798.mlab.com:43798/heroku_j0k144n5"
+//app.use(cors());
 
 //For running on Heroku
 var MONGO_URI = process.env.MONGODB_URI
