@@ -11,9 +11,10 @@
                *ngFor="let assinatura of assinaturas"
                (click)="selectAssinatura(assinatura)"
                [class.active]="assinatura === selectedAssinatura">
-                Data: {{assinatura.data}}
-                <p>Produto: {{assinatura.produto.nome}}</p>
-                <p>Empresa responsável: {{assinatura.empresa_gerencia.nome}} Empresa que paga: {{assinatura.empresa_paga.nome}}</p>
+                <b>Data: {{assinatura.data}}</b>
+                <p>Produto: {{assinatura.produto.nome}} Moeda: {{assinatura.moeda}} Valor: {{assinatura.valor}}</p>
+                <p>Empresa responsável: {{assinatura.empresa_gerencia.nome}}}</p>
+                <p>Empresa que paga: {{assinatura.empresa_paga.nome}</p>
             </a>
         </div>
     </div>

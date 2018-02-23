@@ -13,27 +13,27 @@
         <div class="form-group">
             <label for="assinatura-produto">Produto</label>
             <select class="custom-select" id="assinatura-produto" name="assinatura-produto" [(ngModel)]="assinatura.produto">
-                <option *ngFor="let produto of produtos" value="produto">{{produto.nome}} Valor: {{produto.valor.brl}}</option>
+                <option *ngFor="let produto of produtos" [value]="produto">{{produto.nome}} </option>
             </select>
         </div>
         <div *ngIf="assinatura.produto != null && assinatura.produto.nome != ''" class="form-group">
-            <label for="assinatura-moeda">Moeda</label>
+            <label for="assinatura-moeda">Moeda - Valor</label>
             <select class="custom-select" id="assinatura-moeda" name="assinatura-moeda" [(ngModel)]="assinatura.moeda" (change)="setAssinaturaValor()">
-                <option value="brl"> BRL</option>
-                <option value="usd"> USD</option>
-                <option value="eur"> EUR</option>
+                <option value="brl"> BRL - {{assinatura.produto.valor.brl}}</option>
+                <option value="usd"> USD - {{assinatura.produto.valor.usd}}</option>
+                <option value="eur"> EUR - {{assinatura.produto.valor.eur}}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="assinatura-empresa-gerencia">Empresa responsável</label>
             <select class="custom-select" id="assinatura-empresa-gerencia" name="assinatura-empresa-gerencia" [(ngModel)]="assinatura.empresa_gerencia">
-                <option *ngFor="let empresa of empresas" value="empresa">CNPJ: {{empresa.cnpj}} Nome: {{empresa.nome}}</option>
+                <option *ngFor="let empresa of empresas" [value]="empresa">CNPJ: {{empresa.cnpj}} Nome: {{empresa.nome}}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="assinatura-empresa-paga">Empresa que paga</label>
             <select class="custom-select" id="assinatura-empresa-paga" name="assinatura-empresa-paga" [(ngModel)]="assinatura.empresa_paga">
-                <option *ngFor="let empresa of empresas" value="empresa">CNPJ: {{empresa.cnpj}} Nome: {{empresa.nome}}</option>
+                <option *ngFor="let empresa of empresas" [value]="empresa">CNPJ: {{empresa.cnpj}} Nome: {{empresa.nome}}</option>
             </select>
         </div>
 
