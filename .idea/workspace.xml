@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/dist/inline.bundle.js.map" afterPath="$PROJECT_DIR$/dist/inline.bundle.js.map" />
       <change beforePath="$PROJECT_DIR$/dist/main.bundle.js" afterPath="$PROJECT_DIR$/dist/main.bundle.js" />
       <change beforePath="$PROJECT_DIR$/dist/main.bundle.js.map" afterPath="$PROJECT_DIR$/dist/main.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/src/app/assinaturas/assinatura-details/assinatura-details.component.html" afterPath="$PROJECT_DIR$/src/app/assinaturas/assinatura-details/assinatura-details.component.html" />
       <change beforePath="$PROJECT_DIR$/src/app/assinaturas/assinatura-list/assinatura-list.component.html" afterPath="$PROJECT_DIR$/src/app/assinaturas/assinatura-list/assinatura-list.component.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -25,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/assinaturas/assinatura-list/assinatura-list.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="214">
-              <caret line="14" column="109" lean-forward="false" selection-start-line="14" selection-start-column="109" selection-end-line="14" selection-end-column="109" />
+              <caret line="14" column="101" lean-forward="false" selection-start-line="14" selection-start-column="101" selection-end-line="14" selection-end-column="101" />
               <folding />
             </state>
           </provider>
@@ -260,7 +259,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1519300998223</updated>
-      <workItem from="1519300999736" duration="36838000" />
+      <workItem from="1519300999736" duration="37069000" />
     </task>
     <task id="LOCAL-00001" summary="Adding basic README instructions">
       <created>1519301774058</created>
@@ -280,7 +279,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36838000" />
+    <option name="totallyTimeSpent" value="37069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1920" height="1039" extended-state="6" />
@@ -753,7 +752,7 @@
     <entry file="file://$PROJECT_DIR$/src/app/assinaturas/assinatura-list/assinatura-list.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
-          <caret line="14" column="109" lean-forward="false" selection-start-line="14" selection-start-column="109" selection-end-line="14" selection-end-column="109" />
+          <caret line="14" column="101" lean-forward="false" selection-start-line="14" selection-start-column="101" selection-end-line="14" selection-end-column="101" />
           <folding />
         </state>
       </provider>
