@@ -14,8 +14,8 @@
       <label for="empresa-cnpj">CNPJ</label>
       <input class="form-control" name="empresa-cnpj" [(ngModel)]="empresa.cnpj" placeholder="CNPJ da empresa"/>
     </div>
-    <button class="btn btn-primary" *ngIf="!empresa._id" (click)="createEmpresa(empresa)">Create</button>
-    <button class="btn btn-info" *ngIf="empresa._id" (click)="updateEmpresa(empresa)">Update</button>
-    <button class="btn btn-danger" *ngIf="empresa._id" (click)="deleteEmpresa(empresa._id)">Delete</button>
+    <button class="btn btn-success" *ngIf="!empresa._id" (click)="createEmpresa(empresa)">Salvar</button>
+    <button class="btn btn-warning" *ngIf="empresa._id" (click)="updateEmpresa(empresa)">Editar</button>
+    <button class="btn btn-danger" *ngIf="empresa._id" (click)="deleteEmpresa(empresa._id)">Deletar</button>
   </form>
 </div>

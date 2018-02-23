@@ -1,7 +1,7 @@
 <div *ngIf="produto" class="row">
   <div class="col-md-12">
-    <h2 *ngIf="produto._id">Contact Details</h2>
-    <h2 *ngIf="!produto._id">New Contact</h2>
+    <h2 *ngIf="produto._id">Detalhes do Produto</h2>
+    <h2 *ngIf="!produto._id">Novo Produto</h2>
   </div>
 </div>
 <div *ngIf="produto" class="row">
@@ -18,8 +18,8 @@
       <label for="produto-valor-eur">Valor (EUR)</label>
       <input class="form-control" id="produto-valor-eur" name="produto-valor-eur" [(ngModel)]="produto.valor.eur" placeholder="Valor do produto em EUR"/>
     </div>
-    <button class="btn btn-primary" *ngIf="!produto._id" (click)="createProduto(produto)">Create</button>
-    <button class="btn btn-info" *ngIf="produto._id" (click)="updateProduto(produto)">Update</button>
-    <button class="btn btn-danger" *ngIf="produto._id" (click)="deleteProduto(produto._id)">Delete</button>
+    <button class="btn btn-success" *ngIf="!produto._id" (click)="createProduto(produto)">Salvar</button>
+    <button class="btn btn-warning" *ngIf="produto._id" (click)="updateProduto(produto)">Editar</button>
+    <button class="btn btn-danger" *ngIf="produto._id" (click)="deleteProduto(produto._id)">Deletar</button>
   </form>
 </div>

@@ -3,9 +3,9 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
-var CONTACTS_COLLECTION = "contacts";
 var EMPRESAS_COLLECTION = "empresas";
 var PRODUTOS_COLLECTION = "produtos";
+var ASSINATURAS_COLLECTION = "assinaturas";
 
 var app = express();
 app.use(bodyParser.json());
@@ -40,79 +40,6 @@ function handleError(res, reason, message, code) {
     console.log("ERROR: " + reason);
     res.status(code || 500).json({"error": message});
 }
-
-// CONTACTS API ROUTES BELOW
-
-/*  "/api/contacts"
- *    GET: finds all contacts
- *    POST: creates a new contact
- */
-
-app.get("/api/contacts", function(req, res) {
-    db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
-        if (err) {
-            handleError(res, err.message, "Failed to get contacts.");
-        } else {
-            res.status(200).json(docs);
-        }
-    });
-});
-
-app.post("/api/contacts", function(req, res) {
-    var newContact = req.body;
-
-    if (!req.body.name) {
-        handleError(res, "Invalid user input", "Must provide a name.", 400);
-    }
-
-    db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
-        if (err) {
-            handleError(res, err.message, "Failed to create new contact.");
-        } else {
-            res.status(201).json(doc.ops[0]);
-        }
-    });
-});
-
-/*  "/api/contacts/:id"
- *    GET: find contact by id
- *    PUT: update contact by id
- *    DELETE: deletes contact by id
- */
-
-app.get("/api/contacts/:id", function(req, res) {
-    db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
-        if (err) {
-            handleError(res, err.message, "Failed to get contact");
-        } else {
-            res.status(200).json(doc);
-        }
-    });
-});
-
-app.put("/api/contacts/:id", function(req, res) {
-    var updateDoc = req.body;
-    delete updateDoc._id;
-
-    db.collection(CONTACTS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
-        if (err) {
-            handleError(res, err.message, "Failed to update contact");
-        } else {
-            updateDoc._id = req.params.id;
-            res.status(200).json(updateDoc);
-        }
-    });
-});
-
-app.delete("/api/contacts/:id", function(req, res) {
-    db.collection(CONTACTS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
-        if (err) {
-            handleError(res, err.message, "Failed to delete contact");
-        } else {
-            res.status(200).json(req.params.id);
-        }
-    });
-});
 
 // EMPRESAS API ROUTES BELOW
 
@@ -255,6 +182,79 @@ app.delete("/api/produtos/:id", function(req, res) {
     db.collection(PRODUTOS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
         if (err) {
             handleError(res, err.message, "Failed to delete produto");
+        } else {
+            res.status(200).json(req.params.id);
+        }
+    });
+});
+
+// ASSINATURAS API ROUTES BELOW
+
+/*  "/api/assinaturas"
+ *    GET: finds all assinaturas
+ *    POST: creates a new assinatura
+ */
+
+app.get("/api/assinaturas", function(req, res) {
+    db.collection(ASSINATURAS_COLLECTION).find({}).toArray(function(err, docs) {
+        if (err) {
+            handleError(res, err.message, "Failed to get assinaturas.");
+        } else {
+            res.status(200).json(docs);
+        }
+    });
+});
+
+app.post("/api/assinaturas", function(req, res) {
+    var newAssinatura = req.body;
+
+    // if (!req.body.nome) {
+    //     handleError(res, "Invalid user input", "Must provide a name.", 400);
+    // }
+
+    db.collection(ASSINATURAS_COLLECTION).insertOne(newAssinatura, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to create new assinatura.");
+        } else {
+            res.status(201).json(doc.ops[0]);
+        }
+    });
+});
+
+/*  "/api/assinaturas/:id"
+ *    GET: find assinatura by id
+ *    PUT: update assinatura by id
+ *    DELETE: deletes assinatura by id
+ */
+
+app.get("/api/assinaturas/:id", function(req, res) {
+    db.collection(ASSINATURAS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to get assinatura");
+        } else {
+            res.status(200).json(doc);
+        }
+    });
+});
+
+app.put("/api/assinaturas/:id", function(req, res) {
+    var updateDoc = req.body;
+    delete updateDoc._id;
+
+    db.collection(ASSINATURAS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+        if (err) {
+            handleError(res, err.message, "Failed to update assinatura");
+        } else {
+            updateDoc._id = req.params.id;
+            res.status(200).json(updateDoc);
+        }
+    });
+});
+
+app.delete("/api/assinaturas/:id", function(req, res) {
+    db.collection(ASSINATURAS_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+        if (err) {
+            handleError(res, err.message, "Failed to delete assinatura");
         } else {
             res.status(200).json(req.params.id);
         }

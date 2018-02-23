@@ -1,22 +1,26 @@
 <div class="row">
-  <div class="col-md-5">
-    <h2>Produtos</h2>
-    <ul class="list-group">
-      <li class="list-group-item"
-          *ngFor="let produto of produtos"
-          (click)="selectProduto(produto)"
-          [class.active]="produto === selectedProduto">
-        {{produto.nome}}
-      </li>
-    </ul>
-    <button class="btn btn-warning" (click)="createNewProduto()">New</button>
-  </div>
-  <div class="col-md-5 col-md-offset-2">
-    <app-produto-details
-            [produto]="selectedProduto"
-            [createHandler]="addProduto"
-            [updateHandler]="updateProduto"
-            [deleteHandler]="deleteProduto">
-    </app-produto-details>
-  </div>
+    <div class="col-md-6">
+
+        <button class="btn btn-primary" (click)="createNewProduto()">Novo Produto</button>
+
+        <h2 style="margin-top: 20px">Produtos</h2>
+
+        <div class="list-group">
+            <h5>Clique no produto que deseja editar ou deletar</h5>
+            <button type="button" class="list-group-item"
+                    *ngFor="let produto of produtos"
+                    (click)="selectProduto(produto)"
+                    [class.active]="produto === selectedProduto">
+                Nome: {{produto.nome}}
+            </button>
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <app-produto-details
+                [produto]="selectedProduto"
+                [createHandler]="addProduto"
+                [updateHandler]="updateProduto"
+                [deleteHandler]="deleteProduto">
+        </app-produto-details>
+    </div>
 </div>

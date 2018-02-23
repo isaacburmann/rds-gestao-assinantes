@@ -1,5 +1,17 @@
+<nav style="background-color: #415b9b!important" class="navbar navbar-light">
+    <form class="form-inline">
+        <a class="navbar-brand" routerLink="/home">
+            <img src="../assets/rd_station_logo.png" width="120" class="d-inline-block align-top" alt="">
+            <!--<span style="color: #FFFFFF"> - Gestão de Assinantes e Pagadores</span>-->
+        </a>
+        <button routerLinkActive="active" routerLink="/home" style="margin-right: 10px; min-width: 120px" class="btn btn-outline-light" type="button">Home</button>
+        <button routerLinkActive="active" routerLink="/empresas" style="margin-right: 10px; min-width: 120px" class="btn btn-outline-light" type="button">Empresas</button>
+        <button routerLinkActive="active" routerLink="/produtos" style="margin-right: 10px; min-width: 120px" class="btn btn-outline-light" type="button">Produtos</button>
+        <button routerLinkActive="active" routerLink="/assinaturas" style="margin-right: 10px; min-width: 120px" class="btn btn-outline-light" type="button">Assinaturas</button>
+    </form>
+</nav>
+
 <div class="container">
-    <contact-list></contact-list>
-    <app-produto-list></app-produto-list>
-    <app-empresa-list></app-empresa-list>
+    <br><br>
+    <router-outlet></router-outlet>
 </div>
