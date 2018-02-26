@@ -6,30 +6,30 @@
         <h2 style="margin-top: 20px">Assinaturas</h2>
 
         <div class="list-group">
-            <h5>Clique na assinatura que deseja editar ou deletar</h5>
-            <a type="button" class="list-group-item list-group-item-action"
+            <p>Todas as assinaturas</p>
+            <!--(click)="selectAssinatura(assinatura)"-->
+            <div class="list-group-item"
                *ngFor="let assinatura of assinaturas"
-               (click)="selectAssinatura(assinatura)"
                [class.active]="assinatura === selectedAssinatura">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1"><b>Produto:</b> {{assinatura.produto.nome}}</h5>
-                    <small>Data: {{assinatura.data}}</small>
+                    <small><b>Data:</b> {{assinatura.data}}</small>
                 </div>
-                <small><b>Moeda:</b> {{assinatura.moeda}} <b>Valor:</b> {{assinatura.valor}}</small>
-                <p class="mb-1"><b>Empresa responsável:</b> {{assinatura.empresa_gerencia.nome}}</p>
-                <p class="mb-1"><b>Empresa que paga:</b> {{assinatura.empresa_paga.nome}}</p>
-            </a>
+                <small><b>Moeda:</b> {{assinatura.moeda}} <b>Valor:</b> {{assinatura.valor}}</small><br>
+                <small><b>Empresa assinante:</b> {{assinatura.empresa_gerencia.nome}}</small><br>
+                <small><b>Empresa pagadora:</b> {{assinatura.empresa_paga.nome}}</small>
+            </div>
         </div>
     </div>
-    <div class="col-md-6 col-md-offset-2">
-        <app-assinatura-details
-                [assinatura]="selectedAssinatura"
-                [produtos]="produtos"
-                [empresas]="empresas"
-                [data]="data"
-                [createHandler]="addAssinatura"
-                [updateHandler]="updateAssinatura"
-                [deleteHandler]="deleteAssinatura">
-        </app-assinatura-details>
-    </div>
+    <!--<div class="col-md-6 col-md-offset-2">-->
+        <!--<app-assinatura-details-->
+                <!--[assinatura]="selectedAssinatura"-->
+                <!--[produtos]="produtos"-->
+                <!--[empresas]="empresas"-->
+                <!--[data]="data"-->
+                <!--[createHandler]="addAssinatura"-->
+                <!--[updateHandler]="updateAssinatura"-->
+                <!--[deleteHandler]="deleteAssinatura">-->
+        <!--</app-assinatura-details>-->
+    <!--</div>-->
 </div>

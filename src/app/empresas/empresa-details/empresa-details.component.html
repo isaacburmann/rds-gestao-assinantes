@@ -8,11 +8,20 @@
   <form class="col-md-12">
     <div class="form-group">
       <label for="empresa-nome">Nome</label>
-      <input class="form-control" name="empresa-nome" [(ngModel)]="empresa.nome" placeholder="Nome da empresa"/>
+      <input class="form-control" id="empresa-nome" name="empresa-nome" [(ngModel)]="empresa.nome" placeholder="Nome da empresa"/>
     </div>
     <div class="form-group">
       <label for="empresa-cnpj">CNPJ</label>
-      <input class="form-control" name="empresa-cnpj" [(ngModel)]="empresa.cnpj" placeholder="CNPJ da empresa"/>
+      <input class="form-control" id="empresa-cnpj" name="empresa-cnpj" [(ngModel)]="empresa.cnpj" placeholder="CNPJ da empresa"/>
+    </div>
+    <label>Classificação</label>
+    <div class="form-group custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="assinante" name="assinante" [(ngModel)]="empresa.assinante">
+      <label class="custom-control-label" for="assinante">assinante</label>
+    </div>
+    <div class="form-group custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="pagadora" name="pagadora" [(ngModel)]="empresa.pagadora">
+      <label class="custom-control-label" for="pagadora">pagadora</label>
     </div>
     <button class="btn btn-success" *ngIf="!empresa._id" (click)="createEmpresa(empresa)">Salvar</button>
     <button class="btn btn-warning" *ngIf="empresa._id" (click)="updateEmpresa(empresa)">Editar</button>

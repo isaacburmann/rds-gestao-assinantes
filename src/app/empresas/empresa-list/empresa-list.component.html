@@ -6,12 +6,12 @@
         <h2 style="margin-top: 20px">Empresas</h2>
 
         <div class="list-group">
-            <h5>Clique na empresa que deseja editar ou deletar</h5>
+            <p>Clique na empresa que deseja editar ou deletar</p>
             <a type="button" class="list-group-item list-group-item-action"
                     *ngFor="let empresa of empresas"
                     (click)="selectEmpresa(empresa)"
                     [class.active]="empresa === selectedEmpresa">
-                 Nome: {{empresa.nome}}
+                <b>Nome:</b> {{empresa?.nome}} <span style="float: right"><b>CNPJ:</b> {{empresa?.cnpj}}</span>
             </a>
         </div>
     </div>

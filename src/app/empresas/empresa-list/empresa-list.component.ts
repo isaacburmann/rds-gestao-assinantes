@@ -38,6 +38,9 @@ export class EmpresaListComponent implements OnInit {
         var empresa: Empresa = {
             nome: '',
             cnpj: '',
+            assinante: false,
+            pagadora: false,
+            assinaturas: []
         };
 
         // By default, a newly-created empresa will have the selected state.
