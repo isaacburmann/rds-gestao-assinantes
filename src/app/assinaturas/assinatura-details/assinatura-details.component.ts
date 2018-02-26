@@ -3,18 +3,22 @@ import {Assinatura} from "../assinatura";
 import {AssinaturaService} from "../assinatura.service";
 import {Empresa} from "../../empresas/empresa";
 import {Produto} from "../../produtos/produto";
+import {EmpresaService} from "../../empresas/empresa.service";
 
 @Component({
     selector: 'app-assinatura-details',
     templateUrl: './assinatura-details.component.html',
     styleUrls: ['./assinatura-details.component.css'],
+    providers: [EmpresaService]
 })
 export class AssinaturaDetailsComponent {
 
     @Input()
     assinatura: Assinatura;
     @Input()
-    empresas: Empresa[];
+    empresasAssinantes: Empresa[];
+    @Input()
+    empresasPagantes: Empresa[];
     @Input()
     produtos: Produto[];
     @Input()
@@ -27,7 +31,7 @@ export class AssinaturaDetailsComponent {
     @Input()
     deleteHandler: Function;
 
-    constructor (private assinaturaService: AssinaturaService) {}
+    constructor (private assinaturaService: AssinaturaService, private empresaService: EmpresaService) {}
 
     createAssinatura(assinatura: Assinatura) {
         this.assinaturaService.createAssinatura(assinatura).then((newAssinatura: Assinatura) => {

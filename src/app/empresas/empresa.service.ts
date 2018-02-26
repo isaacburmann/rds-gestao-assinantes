@@ -18,6 +18,22 @@ export class EmpresaService {
             .catch(this.handleError);
     }
 
+    // get("/api/empresas/assinantes")
+    getEmpresasAssinantes(): Promise<void | Empresa[]> {
+        return this.http.get(this.empresasUrl + '/assinantes')
+            .toPromise()
+            .then(response => response.json() as Empresa[])
+            .catch(this.handleError);
+    }
+
+    // get("/api/empresas/pagantes")
+    getEmpresasPagantes(): Promise<void | Empresa[]> {
+        return this.http.get(this.empresasUrl + '/pagantes')
+            .toPromise()
+            .then(response => response.json() as Empresa[])
+            .catch(this.handleError);
+    }
+
     // post("/api/empresas")
     createEmpresa(newEmpresa: Empresa): Promise<void | Empresa> {
         return this.http.post(this.empresasUrl, newEmpresa)

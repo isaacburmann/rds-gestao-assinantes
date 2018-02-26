@@ -1,4 +1,5 @@
 import {Assinatura} from "../assinaturas/assinatura";
+import {Produto} from "../produtos/produto";
 
 export class Empresa {
     _id?: string;
@@ -6,5 +7,16 @@ export class Empresa {
     cnpj: string;
     assinante: boolean;
     pagadora: boolean;
-    assinaturas: Assinatura[];
+    assinaturasGerencia: {
+        moeda: string;
+        valor: string;
+        data: string;
+        produto: string;
+    }[];
+    assinaturasPaga: {
+        moeda: string;
+        valor: string;
+        data: string;
+        produto: string;
+    }[];
 }

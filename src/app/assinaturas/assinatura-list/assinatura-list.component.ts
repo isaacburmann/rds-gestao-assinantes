@@ -17,7 +17,8 @@ export class AssinaturaListComponent implements OnInit {
     assinaturas: Assinatura[]
     selectedAssinatura: Assinatura
 
-    empresas: Empresa[];
+    empresasAssinantes: Empresa[];
+    empresasPagantes: Empresa[];
     produtos: Produto[];
     data: string;
 
@@ -26,8 +27,8 @@ export class AssinaturaListComponent implements OnInit {
     ngOnInit() {
         this.data = new Date().toLocaleDateString('pt-BR')
 
-        console.log('data')
-        console.log(this.data)
+        // console.log('data')
+        // console.log(this.data)
 
         this.assinaturaService.getAssinaturas()
             .then((assinaturas: Assinatura[]) => {
@@ -37,9 +38,17 @@ export class AssinaturaListComponent implements OnInit {
             });
 
         this.empresaService
-            .getEmpresas()
+            .getEmpresasAssinantes()
             .then((empresas: Empresa[]) => {
-                this.empresas = empresas.map((empresa) => {
+                this.empresasAssinantes = empresas.map((empresa) => {
+                    return empresa;
+                });
+            });
+
+        this.empresaService
+            .getEmpresasPagantes()
+            .then((empresas: Empresa[]) => {
+                this.empresasPagantes = empresas.map((empresa) => {
                     return empresa;
                 });
             });
@@ -68,25 +77,9 @@ export class AssinaturaListComponent implements OnInit {
             moeda: '',
             valor: '',
             data: '',
-            produto: {
-                _id: '',
-                nome: '',
-                valor: {
-                    brl: '',
-                    usd: '',
-                    eur: '',
-                }
-            },
-            empresa_gerencia: {
-                _id: '',
-                nome: '',
-                cnpj: '',
-            },
-            empresa_paga: {
-                _id: '',
-                nome: '',
-                cnpj: '',
-            },
+            produto: <Produto> {},
+            empresa_gerencia: <Empresa> {},
+            empresa_paga: <Empresa> {}
         };
 
         // By default, a newly-created assinatura will have the selected state.

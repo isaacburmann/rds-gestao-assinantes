@@ -66,6 +66,26 @@ app.get("/api/empresas", function(req, res) {
     });
 });
 
+app.get("/api/empresas/assinantes", function(req, res) {
+    db.collection(EMPRESAS_COLLECTION).find({assinante: true}).toArray(function(err, docs) {
+        if (err) {
+            handleError(res, err.message, "Failed to get empresas.");
+        } else {
+            res.status(200).json(docs);
+        }
+    });
+});
+
+app.get("/api/empresas/pagantes", function(req, res) {
+    db.collection(EMPRESAS_COLLECTION).find({pagadora: true}).toArray(function(err, docs) {
+        if (err) {
+            handleError(res, err.message, "Failed to get empresas.");
+        } else {
+            res.status(200).json(docs);
+        }
+    });
+});
+
 app.post("/api/empresas", function(req, res) {
     var newEmpresa = req.body;
 

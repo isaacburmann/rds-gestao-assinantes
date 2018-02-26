@@ -21,15 +21,17 @@
             </div>
         </div>
     </div>
-    <!--<div class="col-md-6 col-md-offset-2">-->
-        <!--<app-assinatura-details-->
-                <!--[assinatura]="selectedAssinatura"-->
-                <!--[produtos]="produtos"-->
-                <!--[empresas]="empresas"-->
-                <!--[data]="data"-->
-                <!--[createHandler]="addAssinatura"-->
-                <!--[updateHandler]="updateAssinatura"-->
-                <!--[deleteHandler]="deleteAssinatura">-->
-        <!--</app-assinatura-details>-->
-    <!--</div>-->
+    <div class="col-md-6 col-md-offset-2">
+        <!--[assinatura]="selectedAssinatura"-->
+        <app-assinatura-details
+                [assinatura]="selectedAssinatura"
+                [produtos]="produtos"
+                [empresasAssinantes]="empresasAssinantes"
+                [empresasPagantes]="empresasPagantes"
+                [data]="data"
+                [createHandler]="addAssinatura"
+                [updateHandler]="updateAssinatura"
+                [deleteHandler]="deleteAssinatura">
+        </app-assinatura-details>
+    </div>
 </div>
