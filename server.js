@@ -245,6 +245,26 @@ app.get("/api/assinaturas/:id", function(req, res) {
     });
 });
 
+app.get("/api/assinaturas/empresa_gerencia/:id", function(req, res) {
+    db.collection(ASSINATURAS_COLLECTION).find({"empresa_gerencia._id": new ObjectID(req.params.id)}).toArray(function(err, docs) {
+        if (err) {
+            handleError(res, err.message, "Failed to get assinaturas.");
+        } else {
+            res.status(200).json(docs);
+        }
+    });
+});
+
+app.get("/api/assinaturas/empresa_paga/:id", function(req, res) {
+    db.collection(ASSINATURAS_COLLECTION).find({"empresa_paga._id": new ObjectID(req.params.id)}).toArray(function(err, docs) {
+        if (err) {
+            handleError(res, err.message, "Failed to get assinaturas.");
+        } else {
+            res.status(200).json(docs);
+        }
+    });
+});
+
 app.put("/api/assinaturas/:id", function(req, res) {
     var updateDoc = req.body;
     delete updateDoc._id;
