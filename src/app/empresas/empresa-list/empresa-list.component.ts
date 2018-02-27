@@ -41,7 +41,17 @@ export class EmpresaListComponent implements OnInit {
             assinante: false,
             pagadora: false,
             assinaturasGerencia: [],
-            assinaturasPaga: []
+            valorTotalGerencia: {
+                brl: 0,
+                usd: 0,
+                eur: 0,
+            },
+            assinaturasPaga: [],
+            valorTotalPaga: {
+                brl: 0,
+                usd: 0,
+                eur: 0,
+            }
         };
 
         // By default, a newly-created empresa will have the selected state.

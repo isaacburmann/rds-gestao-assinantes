@@ -19,20 +19,20 @@
         <div *ngIf="assinatura.produto != null && assinatura.produto._id != null" class="form-group">
             <label for="assinatura-moeda">Moeda - Valor</label>
             <select class="custom-select" id="assinatura-moeda" name="assinatura-moeda" [(ngModel)]="assinatura.moeda" (change)="setAssinaturaValorData()">
-                <option value="brl"> BRL - R${{assinatura?.produto?.valor?.brl}}.00</option>
-                <option value="usd"> USD - ${{assinatura?.produto?.valor?.usd}}.00</option>
-                <option value="eur"> EUR - €{{assinatura?.produto?.valor?.eur}}.00</option>
+                <option value="BRL"> BRL - R${{assinatura?.produto?.valor?.brl}}.00</option>
+                <option value="USD"> USD - ${{assinatura?.produto?.valor?.usd}}.00</option>
+                <option value="EUR"> EUR - €{{assinatura?.produto?.valor?.eur}}.00</option>
             </select>
         </div>
         <div class="form-group">
             <label for="assinatura-empresa-gerencia">Empresa que assina/gerencia</label>
-            <select class="custom-select" id="assinatura-empresa-gerencia" name="assinatura-empresa-gerencia" [(ngModel)]="assinatura.empresa_gerencia">
+            <select class="custom-select" id="assinatura-empresa-gerencia" name="assinatura-empresa-gerencia" [(ngModel)]="empresaGerenciaSelected">
                 <option *ngFor="let empresa of empresasAssinantes" [ngValue]="empresa">Nome: {{empresa.nome}} - CNPJ: {{empresa.cnpj}} </option>
             </select>
         </div>
         <div class="form-group">
             <label for="assinatura-empresa-paga">Empresa que paga</label>
-            <select class="custom-select" id="assinatura-empresa-paga" name="assinatura-empresa-paga" [(ngModel)]="assinatura.empresa_paga">
+            <select class="custom-select" id="assinatura-empresa-paga" name="assinatura-empresa-paga" [(ngModel)]="empresaPagaSelected">
                 <option *ngFor="let empresa of empresasPagantes" [ngValue]="empresa">Nome: {{empresa.nome}} - CNPJ: {{empresa.cnpj}} </option>
             </select>
         </div>

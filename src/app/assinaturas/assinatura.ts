@@ -7,6 +7,12 @@ export class Assinatura {
     valor: string;
     data: string;
     produto: Produto;
-    empresa_gerencia: Empresa;
-    empresa_paga: Empresa;
+    empresa_gerencia: {
+        _id: string;
+        nome: string;
+    };
+    empresa_paga: {
+        _id: string;
+        nome: string;
+    };
 }

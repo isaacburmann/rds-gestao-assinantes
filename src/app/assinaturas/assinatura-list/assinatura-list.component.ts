@@ -78,8 +78,14 @@ export class AssinaturaListComponent implements OnInit {
             valor: '',
             data: '',
             produto: <Produto> {},
-            empresa_gerencia: <Empresa> {},
-            empresa_paga: <Empresa> {}
+            empresa_gerencia: {
+                _id: '',
+                nome: ''
+            },
+            empresa_paga:  {
+                _id: '',
+                nome: ''
+            }
         };
 
         // By default, a newly-created assinatura will have the selected state.

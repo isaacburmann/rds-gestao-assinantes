@@ -7,16 +7,16 @@ export class Empresa {
     cnpj: string;
     assinante: boolean;
     pagadora: boolean;
-    assinaturasGerencia: {
-        moeda: string;
-        valor: string;
-        data: string;
-        produto: string;
-    }[];
-    assinaturasPaga: {
-        moeda: string;
-        valor: string;
-        data: string;
-        produto: string;
-    }[];
+    assinaturasGerencia: Assinatura[];
+    valorTotalGerencia: {
+        brl: number;
+        usd: number;
+        eur: number;
+    };
+    assinaturasPaga: Assinatura[];
+    valorTotalPaga: {
+        brl: number;
+        usd: number;
+        eur: number;
+    };
 }
