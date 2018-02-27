@@ -19,11 +19,17 @@ export class EmpresaDetailsComponent {
     @Input()
     deleteHandler: Function;
 
+    success: boolean;
+
     constructor (private empresaService: EmpresaService) {}
 
     createEmpresa(empresa: Empresa) {
         this.empresaService.createEmpresa(empresa).then((newEmpresa: Empresa) => {
             this.createHandler(newEmpresa);
+            this.success = true;
+            setTimeout(() => {
+                this.success = false;
+            },3000);
         });
     }
 

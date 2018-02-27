@@ -12,6 +12,7 @@ export class ProdutoDetailsComponent {
     @Input()
     produto: Produto;
 
+
     @Input()
     createHandler: Function;
     @Input()
@@ -19,11 +20,17 @@ export class ProdutoDetailsComponent {
     @Input()
     deleteHandler: Function;
 
+    success: boolean;
+
     constructor (private produtoService: ProdutoService) {}
 
     createProduto(produto: Produto) {
         this.produtoService.createProduto(produto).then((newProduto: Produto) => {
             this.createHandler(newProduto);
+            this.success = true;
+            setTimeout(() => {
+                this.success = false;
+            },3000);
         });
     }
 

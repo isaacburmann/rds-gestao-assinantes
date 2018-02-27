@@ -34,6 +34,8 @@ export class AssinaturaDetailsComponent {
     empresaPagaSelected: Empresa;
     empresaGerenciaSelected: Empresa;
 
+    success: boolean;
+
     constructor (private assinaturaService: AssinaturaService, private empresaService: EmpresaService) {}
 
     createAssinatura(assinatura: Assinatura) {
@@ -44,6 +46,10 @@ export class AssinaturaDetailsComponent {
         this.assinaturaService.createAssinatura(assinatura).then((newAssinatura: Assinatura) => {
             this.createHandler(newAssinatura);
             this.updateAssinaturaEmpresas(newAssinatura);
+            this.success = true;
+            setTimeout(() => {
+                this.success = false;
+            },3000);
         });
     }
 

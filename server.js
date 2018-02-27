@@ -19,11 +19,11 @@ app.use(express.static(distDir));
 var db;
 
 //For running locally only
-//var MONGO_URI = "mongodb://heroku_j0k144n5:ge6buss098frbfnnv4ulbcesjk@ds243798.mlab.com:43798/heroku_j0k144n5"
-//app.use(cors());
+var MONGO_URI = "mongodb://heroku_j0k144n5:ge6buss098frbfnnv4ulbcesjk@ds243798.mlab.com:43798/heroku_j0k144n5"
+app.use(cors());
 
 //For running on Heroku
-var MONGO_URI = process.env.MONGODB_URI
+//var MONGO_URI = process.env.MONGODB_URI
 
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(MONGO_URI, function (err, database) {
