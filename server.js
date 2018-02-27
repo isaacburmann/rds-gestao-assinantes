@@ -19,11 +19,11 @@ app.use(express.static(distDir));
 var db;
 
 //For running locally only
-var MONGO_URI = "mongodb://heroku_j0k144n5:ge6buss098frbfnnv4ulbcesjk@ds243798.mlab.com:43798/heroku_j0k144n5"
-app.use(cors());
+//var MONGO_URI = "mongodb://heroku_j0k144n5:ge6buss098frbfnnv4ulbcesjk@ds243798.mlab.com:43798/heroku_j0k144n5"
+//app.use(cors());
 
 //For running on Heroku
-//var MONGO_URI = process.env.MONGODB_URI
+var MONGO_URI = process.env.MONGODB_URI
 
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(MONGO_URI, function (err, database) {
@@ -65,26 +65,6 @@ app.get("/api/empresas", function(req, res) {
         }
     });
 });
-
-// app.get("/api/empresas/gerencia", function(req, res) {
-//     db.collection(EMPRESAS_COLLECTION).find({assinante: true}).toArray(function(err, docs) {
-//         if (err) {
-//             handleError(res, err.message, "Failed to get empresas.");
-//         } else {
-//             res.status(200).json(docs);
-//         }
-//     });
-// });
-//
-// app.get("/api/empresas/paga", function(req, res) {
-//     db.collection(EMPRESAS_COLLECTION).find({pagadora: true}).toArray(function(err, docs) {
-//         if (err) {
-//             handleError(res, err.message, "Failed to get empresas.");
-//         } else {
-//             res.status(200).json(docs);
-//         }
-//     });
-// });
 
 
 app.get("/api/empresas/assinantes", function(req, res) {
@@ -285,26 +265,6 @@ app.get("/api/assinaturas/:id", function(req, res) {
         }
     });
 });
-
-// app.get("/api/assinaturas/empresa_gerencia/:id", function(req, res) {
-//     db.collection(ASSINATURAS_COLLECTION).find({"empresa_gerencia._id": new ObjectID(req.params.id)}).toArray(function(err, docs) {
-//         if (err) {
-//             handleError(res, err.message, "Failed to get assinaturas.");
-//         } else {
-//             res.status(200).json(docs);
-//         }
-//     });
-// });
-//
-// app.get("/api/assinaturas/empresa_paga/:id", function(req, res) {
-//     db.collection(ASSINATURAS_COLLECTION).find({"empresa_paga._id": new ObjectID(req.params.id)}).toArray(function(err, docs) {
-//         if (err) {
-//             handleError(res, err.message, "Failed to get assinaturas.");
-//         } else {
-//             res.status(200).json(docs);
-//         }
-//     });
-// });
 
 app.put("/api/assinaturas/:id", function(req, res) {
     var updateDoc = req.body;

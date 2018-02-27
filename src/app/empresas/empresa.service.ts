@@ -35,22 +35,6 @@ export class EmpresaService {
             .catch(this.handleError);
     }
 
-    // // get ("/api/empresas/gerencia")
-    // getEmpresasGerencia(): Promise<void | Empresa[]> {
-    //     return this.http.get(this.empresasUrl + '/gerencia')
-    //         .toPromise()
-    //         .then(response => response.json() as Empresa[])
-    //         .catch(this.handleError);
-    // }
-    //
-    // // get ("/api/empresas/paga")
-    // getEmpresasPaga(): Promise<void | Empresa[]> {
-    //     return this.http.get(this.empresasUrl  + '/paga')
-    //         .toPromise()
-    //         .then(response => response.json() as Empresa[])
-    //         .catch(this.handleError);
-    // }
-
     // post("/api/empresas")
     createEmpresa(newEmpresa: Empresa): Promise<void | Empresa> {
         return this.http.post(this.empresasUrl, newEmpresa)
