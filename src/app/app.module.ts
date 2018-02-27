@@ -13,6 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { AssinaturaListComponent } from './assinaturas/assinatura-list/assinatura-list.component';
 import { AssinaturaDetailsComponent } from './assinaturas/assinatura-details/assinatura-details.component';
 import {AppRoutingModule} from "./app-routing.module";
+import { AssinaturaListEmpresaGerenciaComponent } from './assinaturas/assinatura-list-empresa-gerencia/assinatura-list-empresa-gerencia.component';
+import { AssinaturaListEmpresaPagaComponent } from './assinaturas/assinatura-list-empresa-paga/assinatura-list-empresa-paga.component';
+import {BsDropdownModule} from "ngx-bootstrap";
 
 
 @NgModule({
@@ -25,12 +28,15 @@ import {AppRoutingModule} from "./app-routing.module";
         ProdutoDetailsComponent,
         AssinaturaListComponent,
         AssinaturaDetailsComponent,
+        AssinaturaListEmpresaGerenciaComponent,
+        AssinaturaListEmpresaPagaComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BsDropdownModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

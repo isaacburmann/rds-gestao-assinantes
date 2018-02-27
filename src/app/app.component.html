@@ -7,7 +7,28 @@
         <button routerLinkActive="active" routerLink="/" style="margin-right: 10px; min-width: 120px" class="btn btn-outline-light" type="button" [routerLinkActiveOptions]="{exact:true}">Home</button>
         <button routerLinkActive="active" routerLink="/empresas" style="margin-right: 10px; min-width: 120px" class="btn btn-outline-light" type="button">Empresas</button>
         <button routerLinkActive="active" routerLink="/produtos" style="margin-right: 10px; min-width: 120px" class="btn btn-outline-light" type="button">Produtos</button>
-        <button routerLinkActive="active" routerLink="/assinaturas" style="margin-right: 10px; min-width: 120px" class="btn btn-outline-light" type="button">Assinaturas</button>
+        <div class="btn-group" dropdown>
+            <button routerLinkActive="active" dropdownToggle type="button" class="btn btn-outline-light dropdown-toggle">
+                Assinaturas <span class="caret"></span>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem"><a routerLinkActive="active" routerLink="/assinaturas" class="dropdown-item"> Todas - Nova Assinatura</a></li>
+                <li class="divider dropdown-divider"></li>
+                <h6 class="dropdown-header">Agrupadas por:</h6>
+                <li role="menuitem"><a routerLinkActive="active" routerLink="/assinaturas-empresa-gerencia" class="dropdown-item">Empresa que gerencia</a></li>
+                <li role="menuitem"><a routerLinkActive="active" routerLink="/assinaturas-empresa-paga" class="dropdown-item">Empresa que paga</a></li>
+            </ul>
+        </div>
+        <!--<div class="dropdown">-->
+            <!--<button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--Assinaturas-->
+            <!--</button>-->
+            <!--<div class="dropdown-menu" aria-labelledby="dropdownMenu2">-->
+                <!--<button routerLink="/assinaturas" class="dropdown-item" type="button">Todas assinaturas</button>-->
+                <!--<button  class="dropdown-item" type="button">Empresa que gerencia</button>-->
+                <!--<button class="dropdown-item" type="button">Empresa que paga</button>-->
+            <!--</div>-->
+        <!--</div>-->
     </form>
 </nav>
 

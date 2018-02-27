@@ -18,21 +18,21 @@ export class AssinaturaService {
             .catch(this.handleError);
     }
 
-    // get by empresa_gerencia ("/api/assinaturas/empresa_gerencia")
-    getAssinaturasEmpresaGerencia(empresaId: String): Promise<void | Assinatura[]> {
-        return this.http.get(this.assinaturasUrl + '/empresa_gerencia/' + empresaId)
-            .toPromise()
-            .then(response => response.json() as Assinatura[])
-            .catch(this.handleError);
-    }
-
-    // get by empresa_paga ("/api/assinaturas/empresa_paga")
-    getAssinaturasEmpresaPaga(empresaId: String): Promise<void | Assinatura[]> {
-        return this.http.get(this.assinaturasUrl  + '/empresa_paga/' + empresaId)
-            .toPromise()
-            .then(response => response.json() as Assinatura[])
-            .catch(this.handleError);
-    }
+    // // get by empresa_gerencia ("/api/assinaturas/empresa_gerencia")
+    // getAssinaturasEmpresaGerencia(empresaId: String): Promise<void | Assinatura[]> {
+    //     return this.http.get(this.assinaturasUrl + '/empresa_gerencia/' + empresaId)
+    //         .toPromise()
+    //         .then(response => response.json() as Assinatura[])
+    //         .catch(this.handleError);
+    // }
+    //
+    // // get by empresa_paga ("/api/assinaturas/empresa_paga")
+    // getAssinaturasEmpresaPaga(empresaId: String): Promise<void | Assinatura[]> {
+    //     return this.http.get(this.assinaturasUrl  + '/empresa_paga/' + empresaId)
+    //         .toPromise()
+    //         .then(response => response.json() as Assinatura[])
+    //         .catch(this.handleError);
+    // }
 
     // post("/api/assinaturas")
     createAssinatura(newAssinatura: Assinatura): Promise<void | Assinatura> {
