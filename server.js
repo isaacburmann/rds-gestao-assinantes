@@ -237,10 +237,6 @@ app.get("/api/assinaturas", function(req, res) {
 app.post("/api/assinaturas", function(req, res) {
     var newAssinatura = req.body;
 
-    // if (!req.body.nome) {
-    //     handleError(res, "Invalid user input", "Must provide a name.", 400);
-    // }
-
     db.collection(ASSINATURAS_COLLECTION).insertOne(newAssinatura, function(err, doc) {
         if (err) {
             handleError(res, err.message, "Failed to create new assinatura.");
