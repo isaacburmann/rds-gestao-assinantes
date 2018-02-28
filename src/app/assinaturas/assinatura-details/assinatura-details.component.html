@@ -8,20 +8,20 @@
     </div>
 </div>
 <div *ngIf="assinatura" class="row">
-    <form class="col-md-12">
+    <form #form="ngForm" ngNativeValidate class="col-md-12">
         <div class="form-group">
             <label for="assinatura-data">Data</label>
             <input disabled class="form-control" id="assinatura-data" name="assinatura-data" [value]="data"/>
         </div>
         <div class="form-group">
             <label for="assinatura-produto">Produto</label>
-            <select class="custom-select" id="assinatura-produto" name="assinatura-produto" [(ngModel)]="assinatura.produto">
+            <select class="custom-select" id="assinatura-produto" name="assinatura-produto" [(ngModel)]="assinatura.produto" required="required">
                 <option *ngFor="let produto of produtos" [ngValue]="produto">{{produto.nome}} </option>
             </select>
         </div>
         <div *ngIf="assinatura.produto != null && assinatura.produto._id != null" class="form-group">
             <label for="assinatura-moeda">Moeda - Valor</label>
-            <select class="custom-select" id="assinatura-moeda" name="assinatura-moeda" [(ngModel)]="assinatura.moeda" (change)="setAssinaturaValorData()">
+            <select class="custom-select" id="assinatura-moeda" name="assinatura-moeda" [(ngModel)]="assinatura.moeda" (change)="setAssinaturaValorData()" required="required">
                 <option value="BRL"> BRL - R${{assinatura?.produto?.valor?.brl}}.00</option>
                 <option value="USD"> USD - ${{assinatura?.produto?.valor?.usd}}.00</option>
                 <option value="EUR"> EUR - €{{assinatura?.produto?.valor?.eur}}.00</option>
@@ -29,18 +29,18 @@
         </div>
         <div class="form-group">
             <label for="assinatura-empresa-gerencia">Empresa que assina/gerencia</label>
-            <select class="custom-select" id="assinatura-empresa-gerencia" name="assinatura-empresa-gerencia" [(ngModel)]="empresaGerenciaSelected">
+            <select class="custom-select" id="assinatura-empresa-gerencia" name="assinatura-empresa-gerencia" [(ngModel)]="empresaGerenciaSelected" required="required">
                 <option *ngFor="let empresa of empresasAssinantes" [ngValue]="empresa">Nome: {{empresa.nome}} - CNPJ: {{empresa.cnpj}} </option>
             </select>
         </div>
         <div class="form-group">
             <label for="assinatura-empresa-paga">Empresa que paga</label>
-            <select class="custom-select" id="assinatura-empresa-paga" name="assinatura-empresa-paga" [(ngModel)]="empresaPagaSelected">
+            <select class="custom-select" id="assinatura-empresa-paga" name="assinatura-empresa-paga" [(ngModel)]="empresaPagaSelected" required="required">
                 <option *ngFor="let empresa of empresasPagantes" [ngValue]="empresa">Nome: {{empresa.nome}} - CNPJ: {{empresa.cnpj}} </option>
             </select>
         </div>
 
-        <button class="btn btn-success" *ngIf="!assinatura._id" (click)="createAssinatura(assinatura)">Salvar</button>
+        <button class="btn btn-success" *ngIf="!assinatura._id" (click)="createAssinatura(assinatura)" type="submit" [disabled]="!form.valid">Salvar</button>
         <button class="btn btn-warning" *ngIf="assinatura._id" (click)="updateAssinatura(assinatura)">Editar</button>
         <button class="btn btn-danger" *ngIf="assinatura._id" (click)="deleteAssinatura(assinatura._id)">Deletar</button>
     </form>

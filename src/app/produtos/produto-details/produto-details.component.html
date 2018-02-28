@@ -8,34 +8,22 @@
     </div>
 </div>
 <div *ngIf="produto" class="row">
-    <form class="col-md-12">
+    <form #form="ngForm" ngNativeValidate class="col-md-12">
         <div class="form-group">
             <label for="produto-nome">Nome</label>
-            <input class="form-control" id="produto-nome" name="produto-nome" [(ngModel)]="produto.nome" placeholder="Nome do produto" required/>
-            <div class="invalid-feedback">
-                Por favor informe o nome do produto
-            </div>
+            <input class="form-control" id="produto-nome" name="produto-nome" [(ngModel)]="produto.nome" placeholder="Nome do produto" required="required"/>
         </div>
         <div class="form-group">
             <label for="produto-valor-brl">Valor (BRL)</label>
-            <input type="number" class="form-control" id="produto-valor-brl" name="produto-valor-brl" [(ngModel)]="produto.valor.brl" placeholder="Valor do produto em BRL" required/>
-            <div class="invalid-feedback">
-                Por favor informe o valor do produto
-            </div>
+            <input type="number" class="form-control" id="produto-valor-brl" name="produto-valor-brl" [(ngModel)]="produto.valor.brl" placeholder="Valor do produto em BRL" required="required"/>
 
             <label for="produto-valor-usd">Valor (USD)</label>
-            <input type="number" class="form-control" id="produto-valor-usd" name="produto-valor-usd" [(ngModel)]="produto.valor.usd" placeholder="Valor do produto em USD" required/>
-            <div class="invalid-feedback">
-                Por favor informe o valor do produto
-            </div>
+            <input type="number" class="form-control" id="produto-valor-usd" name="produto-valor-usd" [(ngModel)]="produto.valor.usd" placeholder="Valor do produto em USD" required="required"/>
 
             <label for="produto-valor-eur">Valor (EUR)</label>
-            <input type="number" class="form-control" id="produto-valor-eur" name="produto-valor-eur" [(ngModel)]="produto.valor.eur" placeholder="Valor do produto em EUR" required/>
-            <div class="invalid-feedback">
-                Por favor informe o valor do produto
-            </div>
+            <input type="number" class="form-control" id="produto-valor-eur" name="produto-valor-eur" [(ngModel)]="produto.valor.eur" placeholder="Valor do produto em EUR" required="required"/>
         </div>
-        <button class="btn btn-success" *ngIf="!produto._id" (click)="createProduto(produto)">Salvar</button>
+        <button class="btn btn-success" *ngIf="!produto._id" (click)="createProduto(produto)" type="submit" [disabled]="!form.valid">Salvar</button>
         <button class="btn btn-warning" *ngIf="produto._id" (click)="updateProduto(produto)">Editar</button>
         <button class="btn btn-danger" *ngIf="produto._id" (click)="deleteProduto(produto._id)">Deletar</button>
     </form>
