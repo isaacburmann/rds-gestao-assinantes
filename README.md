@@ -48,7 +48,7 @@ run the command: ng serve
 
 The rest api endpoints of this project are:
 
-- EMPRESAS (COMPANIES)
+# EMPRESAS (COMPANIES)
 - GET /api/empresas - Find all empresas
 - GET /api/empresas/:id - Find a single empresa by ID
 - GET /api/empresas/assinantes - Find all empresas classified as assinantes
@@ -58,7 +58,7 @@ The rest api endpoints of this project are:
 - DELETE /api/empresas/:id- Delete a empresa by ID
 
 
-- PRODUTOS (PRODUCTS)
+# PRODUTOS (PRODUCTS)
 - GET /api/produtos - Find all produtos
 - GET /api/produtos/:id - Find a single produto by ID
 - POST /api/produtos - Create a new produto
@@ -66,7 +66,7 @@ The rest api endpoints of this project are:
 - DELETE /api/produtos/:id - Delete a produto by ID
 
 
-- ASSINATURAS (ASSIGNS)
+# ASSINATURAS (ASSIGNS)
 - GET /api/assinaturas - Find all assinaturas
 - GET /api/empresas/:id - Find a single assinatura by ID
 - POST /api/assinaturas - Create a new assinatura
@@ -98,5 +98,6 @@ The rest api endpoints of this project are:
                         }
                     }
 
-OBS: Web API address: https://nameless-reaches-10849.herokuapp.com/api/assinaturas
-     Local API address: https://localhost:8080/api/assinaturas
+Obs about api address:
+- Web API address: https://nameless-reaches-10849.herokuapp.com/api/assinaturas
+- Local API address: https://localhost:8080/api/assinaturas
